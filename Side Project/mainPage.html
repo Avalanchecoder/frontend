@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="mainPage.css">
+    <title>Main Page</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="video-div">
+            <video height="400" controls loop>
+                <source src="./coverr--03-26-20-4x-6060.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="options-div">
+            <select name="formation" id="formation" autocomplete="off">
+                <option value="Formation" disabled selected>Select a formation</option>
+                <option value="star">Star</option>
+                <option value="plus">Plus</option>
+                <option value="square">Square</option>
+            </select>
+            <a href="secondPage.html" class="btn giveCo">Give Coordinates</a>
+        </div>
+    </div>
+    <div class="robot-info">
+        <div class="robot-wrapper">
+            <div>Robot 1</div>
+            <div class="x-co">x-coordinate : <span>100</span></div>
+            <div class="y-co">y-coordinate : <span>100</span></div>
+        </div>
+        <div class="robot-wrapper">
+            <div>Robot 2</div>
+            <div class="x-co">x-coordinate : <span>100</span></div>
+            <div class="y-co">y-coordinate : <span>100</span></div>
+        </div>
+        <div class="robot-wrapper">
+            <div>Robot 3</div>
+            <div class="x-co">x-coordinate : <span>100</span></div>
+            <div class="y-co">y-coordinate : <span>100</span></div>
+        </div>
+        <div class="robot-wrapper">
+            <div>Robot 4</div>
+            <div class="x-co">x-coordinate : <span>100</span></div>
+            <div class="y-co">y-coordinate : <span>100</span></div>
+        </div>
+        <div class="robot-wrapper" style="margin-bottom: 5vh;">
+            <div>Robot 5</div>
+            <div class="x-co">x-coordinate : <span>100</span></div>
+            <div class="y-co">y-coordinate : <span>100</span></div>
+        </div>
+    </div>
+    <script src="./jquery-3.5.0.min.js"></script>
+    <script>
+        const formation = document.querySelector('#formation');
+        formation.onchange = (e) => {
+            $(function() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/user/mainPage/',
+                    data: {
+                        changedValue: e.target.value
+                    }
+                })
+            });
+        }
+    </script>
+</body>
+</html>

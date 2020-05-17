@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./secondPage.css">
+    <title>Second Page</title>
+</head>
+<body>
+    <form>
+        <div class="wrapper">
+            <select name="robot" id="robot" autocomplete="off">
+                <option value="selectRobot" selected disabled >Select Robot</option>
+                <option value="r1">Robot 1</option>
+                <option value="r2">Robot 2</option>
+                <option value="r3">Robot 3</option>
+                <option value="r4">Robot 4</option>
+                <option value="r5">Robot 5</option>
+            </select>
+            <div class="co">
+                <div class="x-co">x-coordinate</div>
+                <input type="number" required autocomplete="off">
+                <div class="y-co">y-coordinate</div>
+                <input type="number" required autocomplete="off">
+            </div>
+        </div>
+        <button class="submit">Submit</button>
+    </form>
+
+    <script src="./jquery-3.5.0.min.js"></script>
+    <script>
+        const submit = document.querySelector('.submit');
+        submit.addEventListener('click', e => {
+            e.preventDefault();
+            if(e.target.parentElement[0].value!=="selectRobot" && e.target.parentElement[1].value!=='' && e.target.parentElement[2].value!==''){
+                let robot = e.target.parentElement[0].value;
+                let xCoordinate = e.target.parentElement[1].value;
+                let yCoordinate = e.target.parentElement[2].value;
+                $(function() {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/user/secondPage/',
+                        data: {
+                            robot: robot,
+                            xCoordinate: xCoordinate,
+                            yCoordinate: yCoordinate
+                        }
+                    })
+                });
+                e.target.parentElement[0].value = "selectRobot";
+                e.target.parentElement[1].value = "0";
+                e.target.parentElement[2].value = "0";
+            }
+            else{
+                alert('Please fill in complete details.');
+            }
+        })
+    </script>
+</body>
+</html>

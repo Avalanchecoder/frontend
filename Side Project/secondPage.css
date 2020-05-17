@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    background: white;
+}
+
+.wrapper{
+    padding: 1em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#robot{
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid black;
+    width: 20%;
+    background-color: rgb(255, 255, 255);
+    padding: 0.5em;
+    color: black;
+}
+
+.co{
+    display: flex;
+    font-size: 18px;
+    color: black;
+}
+
+.x-co, .y-co{
+    margin: auto 2vw;
+}
+
+input[type="number"]{
+    padding: 1%;
+}
+
+.submit{
+    margin-left: 10vw;
+    width: 80%;
+    padding: 0.5%;
+    background: whitesmoke;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    cursor: pointer;
+}
